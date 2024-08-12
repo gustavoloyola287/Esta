@@ -1,19 +1,20 @@
-
 def calcular_mediana(lista):
-    # Ordenar los lista
+    # Ordenar los elementos de la lista
+    lista_ordenada = sorted(lista)
+    print("Los datos ingresados son: ",lista)
+    print("Lista ordenada de los datos: ",lista_ordenada)
     cantidad_lista = 0
-    #cantidad_lista.sorted()
     for numero in lista:
         if numero >= 0 or numero <= 0:
-            cantidad_lista = len(lista)
+            cantidad_lista = len(lista_ordenada)
         
     # Verificar si el número de lista es par o impar
     if cantidad_lista % 2 == 0:
         # Si es par, la mediana es el promedio de los dos valores del medio
-        mediana = (lista[cantidad_lista//2 - 1] + lista[cantidad_lista // 2]) / 2
+        mediana = (lista_ordenada[cantidad_lista//2 - 1] + lista_ordenada[cantidad_lista // 2]) / 2
     else:
         # Si es impar, la mediana es el valor del medio
-        mediana = lista[cantidad_lista//2]
+        mediana = lista_ordenada[cantidad_lista//2]
     print("Esta es la mediana de tu lista : ", mediana)
     return mediana
 
@@ -34,7 +35,7 @@ def calcular_moda(lista):
     for key, value in frecuencia.items():
         if value == moda:
             moda_resultado.append(key)
-    print ("esta es la moda de tus datos: ", moda_resultado)
+    print ("Esta es la moda de tus datos: ", moda_resultado)
     return moda_resultado   
 def calcular_media (lista):
 
@@ -51,7 +52,7 @@ def calcular_minimo_mayor (lista):
             numeroMayor = numero
         if numero < numeroMenor:
             numeroMenor = numero
-    print ("El dato mínimo es: ",numeroMenor)
+    print ("El dato minimo es: ",numeroMenor)
     print ("El dato mayor es: ",numeroMayor)
     return numeroMenor,numeroMayor
 def calcular_frecuencia_absoluta(lista):
@@ -65,21 +66,21 @@ def calcular_frecuencia_absoluta(lista):
     print ("Esta es tu frecuencia absoluta",frecuencias)
     return frecuencias 
 def calcular_cuartiles(lista):
+    lista_ordenada = sorted(lista)
+    n = len(lista_ordenada)
     
-    n = len(lista)
-    
-    Q2 = (lista[n // 2 - 1] + lista[n // 2]) / 2 if n % 2 == 0 else lista[n // 2]
+    Q2 = (lista_ordenada[n // 2 - 1] + lista_ordenada[n // 2]) / 2 if n % 2 == 0 else lista_ordenada[n // 2]
     
     mitad = n // 2
-    Q1 = (lista[mitad // 2 - 1] + lista[mitad // 2]) / 2 if mitad % 2 == 0 else lista[mitad // 2]
+    Q1 = (lista_ordenada[mitad // 2 - 1] + lista_ordenada[mitad // 2]) / 2 if mitad % 2 == 0 else lista_ordenada[mitad // 2]
     
     if n % 2 == 0:
-        Q3 = (lista[mitad + mitad // 2 - 1] + lista[mitad + mitad // 2]) / 2 if mitad % 2 == 0 else lista[mitad + mitad // 2]
+        Q3 = (lista_ordenada[mitad + mitad // 2 - 1] + lista_ordenada[mitad + mitad // 2]) / 2 if mitad % 2 == 0 else lista_ordenada[mitad + mitad // 2]
     else:
-        Q3 = (lista[mitad + 1 + mitad // 2 - 1] + lista[mitad + 1 + mitad // 2]) / 2 if (mitad + 1) % 2 == 0 else lista[mitad + 1 + mitad // 2]
+        Q3 = (lista_ordenada[mitad + 1 + mitad // 2 - 1] + lista_ordenada[mitad + 1 + mitad // 2]) / 2 if (mitad + 1) % 2 == 0 else lista_ordenada[mitad + 1 + mitad // 2]
     
     
-    print ("Q1 vale:",Q1,", q2 vale:",Q2,"y q3 vale: ",Q3)
+    print ("Q1 vale:",Q1,", Q2 vale:",Q2,"Q3 vale: ",Q3)
     return Q1, Q2, Q3
 
 while True:
@@ -90,13 +91,13 @@ while True:
         break
         
     except ValueError:
-        print ("dato no admitido por favor ingresa los lista con coma ")
-        print("ejemplo : '1,2,3,4,7' ")    
+        print ("Dato no admitido por favor ingresa los lista con coma ")
+        print("Ejemplo : '1,2,3,4,7' ")    
         
 while True: 
         
     try:
-        usuario = input ("que dato desea ver. mediana, moda, media, mayor y minimo, frecuencia o todos:")
+        usuario = input ("Que dato desea ver Mediana, Moda, Media, Mayor y Minimo, Cuartiles, Frecuencia o Todos:")
         if usuario.lower() == "mediana":    
             calcular_mediana (numeros)
         if usuario.lower() == "moda": 
@@ -108,20 +109,21 @@ while True:
         if usuario.lower() == "cuartiles":
             calcular_cuartiles(numeros)
         if usuario.lower() == "frecuencia":
-           
-         if usuario.lower() == "todos":
+            calcular_frecuencia_absoluta (numeros)
+        elif usuario.lower() == "todos":
             calcular_mediana (numeros)
             calcular_moda(numeros)
             calcular_media(numeros)
             calcular_cuartiles(numeros)
             calcular_minimo_mayor(numeros)
-            calcular_frecuencia_absoluta (numeros)
+            calcular_frecuencia_absoluta(numeros)
+            #print(numeros)
         if usuario.lower() == "volver":
             break
         else:
             False
     except ValueError:
-            print ("ingrese de nuevo su consulta")
+            print ("Ingrese de nuevo su consulta")
 while True:
     try :
         dato = input("Ingresa números separados por coma: ")
@@ -131,11 +133,11 @@ while True:
     except ValueError:
         print ("dato no admitido por favor ingresa los lista con coma ")
         print("ejemplo : '1,2,3,4,7' ")    
-        
+"""    
 while True: 
         
     try:
-        usuario = input ("que dato desea ver. mediana, moda, media, mayor y minimo, frecuencia o todos:")
+        usuario = input ("Que dato desea ver Mediana, Moda, Media, Mayor y Minimo, Cuartiles, Frecuencia o todos:")
         if usuario.lower() == "mediana":    
             calcular_mediana (numeros)
         if usuario.lower() == "moda": 
@@ -173,7 +175,7 @@ while True:
 while True: 
         
     try:
-        usuario = input ("que dato desea ver. mediana, moda, media, mayor y minimo, frecuencia o todos:")
+        usuario = input ("Que dato desea ver Mediana, Moda, Media, Mayor y Minimo, Cuartiles, Frecuencia o todos:")
         if usuario.lower() == "mediana":    
             calcular_mediana (numeros)
         if usuario.lower() == "moda": 
@@ -191,11 +193,13 @@ while True:
             calcular_moda(numeros)
             calcular_media(numeros)
             calcular_cuartiles(numeros)
-            calcular_frecuencia_absoluta (numeros)
             calcular_minimo_mayor(numeros)
+            calcular_cuartiles(numeros)
         if usuario.lower() == "volver":
            break
         else:
             print ("ingrese de nuevo su consulta") 
     except ValueError:
-            print ("ingrese de nuevo su consulta")
+            print ("ingrese de nuevo su consulta")"""
+            
+            

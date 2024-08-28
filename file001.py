@@ -65,6 +65,7 @@ def calcular_frecuencia_absoluta(lista):
 
     print ("Esta es tu frecuencia absoluta",frecuencias)
     return frecuencias 
+"""""
 def calcular_cuartiles(lista):
     lista_ordenada = sorted(lista)
     n = len(lista_ordenada)
@@ -74,14 +75,37 @@ def calcular_cuartiles(lista):
     mitad = n // 2
     Q1 = (lista_ordenada[mitad // 2 - 1] + lista_ordenada[mitad // 2]) / 2 if mitad % 2 == 0 else lista_ordenada[mitad // 2]
     
-    if n % 2 == 0:
-        Q3 = (lista_ordenada[mitad + mitad // 2 - 1] + lista_ordenada[mitad + mitad // 2]) / 2 if mitad % 2 == 0 else lista_ordenada[mitad + mitad // 2]
-    else:
-        Q3 = (lista_ordenada[mitad + 1 + mitad // 2 - 1] + lista_ordenada[mitad + 1 + mitad // 2]) / 2 if (mitad + 1) % 2 == 0 else lista_ordenada[mitad + 1 + mitad // 2]
-    
-    
+    #if n % 2 == 0:
+    Q3 = (lista_ordenada[mitad // 2 - 1] + lista_ordenada[mitad // 2]) / 2 if mitad % 2 == 0 else lista_ordenada[mitad // 2]
+    #else:
+     #   Q3 = (lista_ordenada[mitad + 1 + mitad // 2 - 1] + lista_ordenada[mitad + 1 + mitad // 2]) / 2 if (mitad + 1) % 2 == 0 else lista_ordenada[mitad + 1 + mitad // 2]
     print ("Q1 vale:",Q1,", Q2 vale:",Q2,"Q3 vale: ",Q3)
     return Q1, Q2, Q3
+"""""
+   # Función auxiliar para calcular la mediana
+def calcular_cuartiles(lista):
+    n = len(lista)
+    if n % 2 == 0:
+        return (lista[n//2 - 1] + lista[n//2]) / 2
+    else:
+        return lista[n//2]
+    
+    # Dividir los datos para obtener Q1, Q2 y Q3
+    if n % 2 == 0:
+        lower_half = datos_ordenados[:n//2]
+        upper_half = datos_ordenados[n//2:]
+else:
+        lower_half = datos_ordenados[:n//2]
+        upper_half = datos_ordenados[n//2 + 1:]
+    
+    # Calcular Q1, Q2 (mediana) y Q3
+Q1 = media(lower_half)
+Q2 = media(datos_ordenados)
+Q3 = media(upper_half)
+print(Q1, Q2, Q3)
+
+    
+    
 
 while True:
     try :
@@ -114,7 +138,7 @@ while True:
             calcular_mediana (numeros)
             calcular_moda(numeros)
             calcular_media(numeros)
-            calcular_cuartiles(numeros)
+            #calcular_cuartiles(numeros)
             calcular_minimo_mayor(numeros)
             calcular_frecuencia_absoluta(numeros)
             #print(numeros)
@@ -133,73 +157,6 @@ while True:
     except ValueError:
         print ("dato no admitido por favor ingresa los lista con coma ")
         print("ejemplo : '1,2,3,4,7' ")    
-"""    
-while True: 
-        
-    try:
-        usuario = input ("Que dato desea ver Mediana, Moda, Media, Mayor y Minimo, Cuartiles, Frecuencia o todos:")
-        if usuario.lower() == "mediana":    
-            calcular_mediana (numeros)
-        if usuario.lower() == "moda": 
-            calcular_moda(numeros)
-        if usuario.lower () == "media":
-            calcular_media(numeros)
-        if usuario.lower () == "mayor y menor":
-            calcular_minimo_mayor(numeros)
-        if usuario.lower() == "cuartiles":
-            calcular_cuartiles(numeros)
-        if usuario.lower() == "frecuencia":
-            calcular_frecuencia_absoluta (numeros)
-        elif usuario.lower() == "todos":
-            calcular_mediana (numeros)
-            calcular_moda(numeros)
-            calcular_media(numeros)
-            calcular_cuartiles(numeros)
-            calcular_minimo_mayor(numeros)
-        if usuario.lower() == "volver":
-            break
-        else:
-            False
-    except ValueError:
-            print ("ingrese de nuevo su consulta")
-while True:
-    try :
-        dato = input("Ingresa números separados por coma: ")
-        dato_str = dato.split(',')
-        numeros = [float(numeros)for numeros in dato_str]
-        break
-    except ValueError:
-        print ("dato no admitido por favor ingresa los lista con coma ")
-        print("ejemplo : '1,2,3,4,7' ")    
-        
-while True: 
-        
-    try:
-        usuario = input ("Que dato desea ver Mediana, Moda, Media, Mayor y Minimo, Cuartiles, Frecuencia o todos:")
-        if usuario.lower() == "mediana":    
-            calcular_mediana (numeros)
-        if usuario.lower() == "moda": 
-            calcular_moda(numeros)
-        if usuario.lower () == "media":
-            calcular_media(numeros)
-        if usuario.lower () == "mayor y menor":
-            calcular_minimo_mayor(numeros)
-        if usuario.lower() == "cuartiles":
-            calcular_cuartiles(numeros)
-        if usuario.lower() == "frecuencia":
-            calcular_frecuencia_absoluta (numeros)
-        if usuario.lower() == "todos":
-            calcular_mediana (numeros)
-            calcular_moda(numeros)
-            calcular_media(numeros)
-            calcular_cuartiles(numeros)
-            calcular_minimo_mayor(numeros)
-            calcular_cuartiles(numeros)
-        if usuario.lower() == "volver":
-           break
-        else:
-            print ("ingrese de nuevo su consulta") 
-    except ValueError:
-            print ("ingrese de nuevo su consulta")"""
+
             
             
